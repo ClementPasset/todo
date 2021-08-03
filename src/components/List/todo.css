@@ -1,0 +1,9 @@
+input:checked + label{
+    text-decoration:line-through;
+}
+h3 > span, label > span{
+    display: none;
+}
+h3:hover > span, label:hover > span {
+    display: inline;
+}
