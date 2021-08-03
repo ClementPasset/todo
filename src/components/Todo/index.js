@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
 
 const Todo = ({ lists, setLists, todo }) => {
 
@@ -31,9 +30,7 @@ const Todo = ({ lists, setLists, todo }) => {
     };
 
     const handleInputChange = (e) => {
-        if (e.target.value !== '') {
-            setName(e.target.value);
-        }
+        setName(e.target.value);
     };
 
     const handleInputValidation = (e) => {
@@ -50,14 +47,14 @@ const Todo = ({ lists, setLists, todo }) => {
         <div>
             {!isSelected && <h3 onClick={() => setSelected(true)}>{name}<span onClick={deleteTodo} style={{ 'cursor': 'pointer' }}>    ❌     </span></h3>}
             {isSelected && <React.Fragment><input onChange={handleInputChange} onKeyDown={(e) => {
-                if (e.code === "NumpadEnter" || e.code === "Enter") {
+                if (e.keyCode === 13) {
                     handleInputValidation(e);
                 }
             }} onBlur={handleInputValidation} style={{ 'margin': '1.5rem' }} type='text' value={name} /><span onClick={deleteTodo} style={{ 'cursor': 'pointer' }}>    ❌     </span></React.Fragment>}
             <ul>
                 {todo.list.length > 0 && todo.list.map((elt, index) => <li key={`task-${elt}-${index}`}><input type="checkbox" id={`task-${elt}-${index}`} /><label htmlFor={`task-${elt}-${index}`}>{elt}<span onClick={() => removeItem(todo, index)} style={{ 'cursor': 'pointer' }}>     ❌     </span></label></li>)}
                 <li><input onKeyDown={(e) => {
-                    if (e.code === "NumpadEnter" || e.code === "Enter") {
+                    if (e.keyCode === 13) {
                         addTask(e);
                     }
                 }} onBlur={addTask} type="text" /></li>
