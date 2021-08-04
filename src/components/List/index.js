@@ -3,6 +3,16 @@ import styled from "styled-components";
 import Todo from "../Todo";
 import './todo.css';
 
+const StyledTitle = styled.h2`
+text-align:center;
+padding-right:10rem;
+`;
+
+const Listing = styled.ul`
+width:fit-content;
+margin: 0 auto;
+`;
+
 const List = ({ lists, setLists }) => {
 
     useEffect(() => {
@@ -12,16 +22,6 @@ const List = ({ lists, setLists }) => {
     useEffect(() => {
         localStorage.setItem('todoLists', JSON.stringify(lists));
     }, [lists]);
-
-    const StyledTitle = styled.h2`
-        text-align:center;
-        padding-right:10rem;
-    `;
-
-    const Listing = styled.ul`
-        width:fit-content;
-        margin: 0 auto;
-    `;
 
     return (
         <React.Fragment>
